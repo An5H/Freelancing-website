@@ -1,0 +1,40 @@
+.header {
+  min-height: 100px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.filter {
+  min-height: 50px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  margin-bottom: 20px;
+}
+
+.content-container {
+  min-height: calc(100vh - 220px);
+  background-color: rgb(255, 255, 255);
+}
+
+.sidebar-container {
+  padding: 20px;
+  height: inherit;
+}
+.sidebar {
+  height: 70px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+}
+
+.feed {
+  height: inherit;
+  background-color: white;
+}
+
+.notifications {
+  height: inherit;
+}
+
+a {
+  text-decoration: none;
+}

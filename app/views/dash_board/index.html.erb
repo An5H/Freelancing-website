@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'explore-main.css' %>
+
+<%# Logo and Search Bar %>
+<%= render '/common-components/header'%>
+
+<%# Filters %>
+<%= render '/common-components/filters'%>
+
+<%# Sidebar, Feed, Notifications %>
+<div class="col-xs-12 content-container">
+    <div class="col-xs-3 sidebar-container">
+        <%= render '/common-components/sidebar'%>
+    </div>
+    <div class="col-xs-6 feed">
+        Dashboard
+    </div>
+    <div class="col-xs-3">
+        <%= render 'components/notifications/notification-tab'%>
+    </div>
+</div>

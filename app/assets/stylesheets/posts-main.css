@@ -1,0 +1,94 @@
+.post-container {
+  padding: 20px;
+  width: 400px !important;
+  border-radius: 3px;
+  background-color: #dedede;
+  color: #000000;
+}
+
+.poster-details {
+  display: flex;
+  align-items: center;
+}
+
+.pad-0 {
+  padding: 0px !important;
+}
+
+.profile-pic {
+  height: 60px;
+
+  background-color: #858989;
+
+  border-radius: 50%;
+}
+
+.posted-date {
+  font-style: italic;
+
+  color: #777777;
+
+  font-size: 12px;
+}
+
+.heading {
+  display: flex;
+
+  align-items: baseline;
+}
+
+.container {
+  background-color: #ccc8c8;
+
+  border-radius: 3px;
+
+  padding: 10px;
+
+  margin: 20px 0px 0px 0px;
+}
+
+.poster-name {
+  font-size: 18px;
+}
+
+.button-container {
+  margin: 20px 0px 0px 0px;
+}
+
+.button {
+  color: white;
+
+  width: 90%;
+
+  font-size: 14px;
+
+  height: 30px;
+
+  background-color: #858989;
+
+  border-radius: 3px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 10px;
+}
+
+.col-xs-3:last-child > .button {
+  margin-left: auto;
+
+  margin-right: 0;
+}
+
+.col-xs-3:first-child > .button {
+  margin-right: auto;
+
+  margin-left: 0;
+}
+
+.job-heading {
+  font-size: 22px;
+}
