@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'notification-modal.css' %>
+
+<div class="popup" id="popup">
+    <div class="col-xs-12 pad-0 poster-details-notifications-modal">
+        <div class="col-xs-2 profile-pic-notifications-modal"></div>
+
+        <div class="col-xs-4 poster-name-notifications-modal">Ansh Dhiman</div>
+
+        <div class="col-xs-4 posted-date-notifications-modal">25th July 2022</div>
+        <div class="col-xs-2"> <img id="drag1" class="notification-modal-cross-icon" onclick="closePopup()" src="<%= asset_path('cross-icon') %>" draggable="true" ondragstart="drag(event)" width="20" height="20"> </div>
+    </div>
+     <div class="col-xs-12 heading container">
+        <div class="job-heading col-xs-12">Job Heading</div>
+    </div>
+    <div class="col-xs-12 description container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repellat.
+        Omnis iure adipisci odit eos ipsum illum illo, qui, iste quis architecto hic
+        magni necessitatibus, magnam rerum dicta dolores quas?
+    </div>
+    
+    <div class="col-xs-12 pad-0 button-container">
+        <div class="col-xs-6 pad-0">
+            <div class="interested">Are you intersted?</div>
+        </div>
+
+        <div class="col-xs-3 pad-0">
+            <button class="button">Accept</button>
+        </div>
+
+        <div class="col-xs-3 pad-0">
+            <button class="button">Reject</button>
+        </div>
+    </div>
+</div>

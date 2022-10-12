@@ -1,0 +1,86 @@
+.popup {
+  width: 500px;
+  background: #fff;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  display: block;
+  z-index: 999;
+  scale: 0;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.open-popup {
+  scale: 1;
+  opacity: 1;
+}
+
+.popup h2 {
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+.popup button {
+  width: 100%;
+  padding: 10px 0;
+  background: grey;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.poster-details-notifications-modal {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile-pic-notifications-modal {
+  width: 65px;
+  height: 65px;
+  background-color: #3a8b8b;
+  border-radius: 50%;
+}
+
+.poster-name-notifications-modal {
+  font-size: 18px;
+}
+
+.posted-date-notifications-modal {
+  font-style: italic;
+  color: #777777;
+  font-size: 12px;
+}
+.notification-modal-cross-icon {
+  cursor: pointer;
+}
+
+.notification-modal-heading {
+  display: flex;
+  align-items: baseline;
+}
+
+.notification-modal-container {
+  background-color: #ccc8c8;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 20px 0px 0px 0px;
+}
+
+.interested {
+  border-radius: 4px;
+  background-color: #ccc8c8;
+  color: black;
+  padding: 10px 0;
+}

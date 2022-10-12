@@ -1,6 +1,9 @@
 //= link_tree ../images
 //= link_tree ../builds
 //= link explore-main.css
-//= link posts-main.css
-//= link_tree ../../javascript .js
+//= link posts.css
 //= link_tree ../../../vendor/javascript .js
+//= link notifications.css
+//= link notification-modal.css
+//= link header.css
+//= link popup.js
