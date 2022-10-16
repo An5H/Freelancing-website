@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   #Routes for Dashboard page
   get "/dash_board", to: "dash_board#index"
 
+  #Route for Applications page
+  get "/application", to: "application#index"
+
   #Routes for Settings page
   get "/settings", to: "settings#index"
 

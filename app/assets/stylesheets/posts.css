@@ -40,7 +40,7 @@
   background-color: #ccc8c8;
   border-radius: 7px;
   padding: 10px;
-  margin: 20px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
 }
 
 .poster-name {
@@ -48,20 +48,15 @@
 }
 
 .button-container {
-  margin: 20px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 .button {
-  color: white;
+  color: grey;
   width: 90%;
   font-size: 14px;
   height: 30px;
-  background-color: #858989;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  cursor: pointer;
 }
 
 .col-xs-3:last-child > .button {
@@ -71,10 +66,38 @@
 
 .col-xs-3:first-child > .button {
   margin-right: auto;
-
   margin-left: 0;
 }
 
 .job-heading {
   font-size: 22px;
+}
+
+.stats-container {
+  margin-top: 10px;
+}
+
+.stats-container-buttons {
+  color: grey;
+  width: 90%;
+  font-size: 14px;
+  height: 30px;
+}
+
+.applied-container {
+  float: right;
+  color: grey;
+  font-size: 14px;
+  height: 30px;
+}
+
+.apply-button {
+  display: flex;
+  align-items: center;
+  float: right;
+  cursor: pointer;
+}
+
+img {
+  color: grey;
 }

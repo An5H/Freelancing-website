@@ -60,6 +60,9 @@ body {
   top: 240px;
 }
 
-a {
+.sidebar a {
   text-decoration: none;
+  color: rgb(24, 10, 10);
+  font-size: larger;
+  font-weight: 200;
 }

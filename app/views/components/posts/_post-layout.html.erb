@@ -1,1 +1,3 @@
-<%= render 'components/posts/post'%>
+<% @posts.each do |post| %>
+    <%= render partial: "components/posts/post", locals: {post: post}%>
+<% end %>
