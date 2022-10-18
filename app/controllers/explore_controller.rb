@@ -13,6 +13,19 @@ class ExploreController < ApplicationController
         @posts << Post.new("Job-Heading-2", "Job-Type-2", description, addinfo)
         @posts << Post.new("Job-Heading-3", "Job-Type-3", description, addinfo)
     end
+
+    def show
+        @data = Hash.new("Job-Heading-1")
+        respond_to do |format|
+            format.js {render layout: false}
+            format.html { render 'index'}
+          end
+    end
+
+    def destroy
+        
+    end
+
 end
 
 class Post

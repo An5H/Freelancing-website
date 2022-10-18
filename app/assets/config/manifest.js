@@ -7,3 +7,4 @@
 //= link notification-modal.css
 //= link header.css
 //= link popup.js
+//= link explore.js

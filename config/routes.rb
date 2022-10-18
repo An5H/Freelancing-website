@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "explore#index"
 
   # Routes for Explore page
-  get "/explore", to: "explore#index"
+  resources :explore
 
   #Routes for Dashboard page
   get "/dash_board", to: "dash_board#index"
