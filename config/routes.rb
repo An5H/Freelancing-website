@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   # Routes for Explore page
   resources :explore
 
+  #Routes for Posts
+
+  resources :posts
+
   #Routes for Dashboard page
   get "/dash_board", to: "dash_board#index"
 

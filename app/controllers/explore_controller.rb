@@ -1,54 +1,60 @@
 class ExploreController < ApplicationController
+    # get this user_id of the user who logins
+    @@user_id = 1
     def index
+        @user = User.find(@@user_id)
         @posts = []
+        posts = Post.all
+        posts.map do |post|
+            post_ob = Hash.new
+            post_ob[:isLiked] = get_is_liked(post)
+            post_ob[:post] = post
+            post_ob[:applied] = true
+            post_ob[:likes] = get_likes(post)
+            post_ob[:created_at] = get_created_at(post)
+            @posts << post_ob
+        end
 
-        addinfo = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque est
-        facilis iusto reiciendis, deleniti consequuntur sunt, nisi, aut"
-
-        description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repellat.
-        Omnis iure adipisci odit eos ipsum illum illo, qui, iste quis architecto hic
-        magni necessitatibus, magnam rerum dicta dolores quas?"
-
-        @posts << Post.new("Job-Heading-1", "Job-Type-1", description, addinfo)
-        @posts << Post.new("Job-Heading-2", "Job-Type-2", description, addinfo)
-        @posts << Post.new("Job-Heading-3", "Job-Type-3", description, addinfo)
     end
 
-    def show
-        @data = Hash.new("Job-Heading-1")
-        respond_to do |format|
-            format.js {render layout: false}
-            format.html { render 'index'}
-          end
+    private
+    def get_is_liked(post)
+        isLiked = Like.where(post_id: post.id, liker_id: @@user_id).count
+        if(isLiked > 0)
+            true
+        else
+            false
+        end
     end
 
-    def destroy
-        
+    def get_likes(post)
+        begin
+            likes = ""
+            likes_count = Like.where(post_id: post.id).count
+            if(likes_count > 1)
+                likes = likes_count.to_s + " likes"
+            elsif (likes_count == 1)
+                likes = likes_count.to_s + " like"
+            else
+                likes = "0 likes"
+            end
+        rescue
+            likes = "0 likes"
+        end
     end
 
+    def get_created_at(post)
+        current_time = Time.now
+        created_at = post.created_at
+        time_diff = current_time.day - created_at.day
+        if(time_diff == 0)
+            time = "Today " + created_at.localtime.strftime("%H:%M %p")
+
+        elsif(time_diff > 0 && time_diff < 2)
+            time = "Yesterday " + created_at.localtime.strftime("%H:%M %p")
+
+        else
+            time = created_at.localtime.strftime("%H:%M %p")
+        end
+    end
 end
-
-class Post
-    def initialize(heading, type, description, addinfo)
-       @post_heading = heading
-       @post_type = type
-       @post_job_description = description
-       @post_job_addinfo = addinfo
-    end
-
-    def get_post_heading
-        @post_heading
-    end
-
-    def get_post_Type
-        @post_type
-    end
-
-    def get_post_AdditionalInfo
-        @post_job_addinfo
-    end
-
-    def get_post_Description
-        @post_job_description
-    end
- end

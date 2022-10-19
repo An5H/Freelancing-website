@@ -1,0 +1,3 @@
+class LikeController < ApplicationController
+    
+end
