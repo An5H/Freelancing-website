@@ -6,7 +6,7 @@
 
     <div class="col-xs-6 poster-name"><%= @user.f_name%> <%= @user.l_name %></div>
 
-    <div class="col-xs-4 posted-date"><%= post[:created_at] %></div>
+    <div class="col-xs-4 posted-date"><%= get_created_at(post[:post]) %></div>
   </div>
   <div class="col-xs-12 heading container">
     <div class="job-heading col-xs-8"> <%= post[:post].job_heading %> </div>
@@ -36,9 +36,9 @@
   <div class="col-xs-12 pad-0 button-container">
     <div class="col-xs-3 pad-0">
       <% if post[:isLiked] == true %>
-        <div class="button"><img id="likes-icon" src="<%= asset_path('like') %>" width="30" height="30"></div>
+        <%= button_to "Liked", "/post/#{post[:post].id}/unlike", method: :put, disabled: false %>
       <% else %>
-        <div class="button"><img id="likes-icon" src="<%= asset_path('unlike') %>" width="30" height="30"></div>
+        <%= button_to "Like", "/post/#{post[:post].id}/like", method: :put, disabled: false %>
       <% end %>
     </div>
 

@@ -9,7 +9,13 @@ Rails.application.routes.draw do
 
   #Routes for Posts
 
-  resources :posts
+  resources :post
+
+  #like post
+  put "/post/:id/like", to: "post#like"
+
+  #unlike post
+  put "/post/:id/unlike", to: "post#unlike"
 
   #Routes for Dashboard page
   get "/dash_board", to: "dash_board#index"
@@ -22,4 +28,5 @@ Rails.application.routes.draw do
 
   #Route for Logout
   get "/logout", to: "logout#index"
+
 end

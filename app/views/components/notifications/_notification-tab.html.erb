@@ -2,5 +2,11 @@
 
 <div class="notification-container">
   <div class="notification-container-heading">Notifications</div>
-  <%= render '/components/notifications/notification'%>
+  <% if @notifications.nil? || @notifications.empty? %>
+    <%= render 'components/notifications/no_notifications' %>
+  <% else %>
+    <% @notifications.each do |notification| %>
+      <%= render partial: '/components/notifications/notification', locals: {notification: notification}%>
+    <% end %>
+  <% end %>
 </div>

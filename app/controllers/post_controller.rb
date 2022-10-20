@@ -1,50 +1,14 @@
 class PostController < ApplicationController
-
-    def index
-        @posts = Post.all
+    @@user_id = 1
+    def like
+        @post = Post.all.find(params[:id])
+        @like = @post.likes.create(liker_id: @@user_id, post_id: @post.id)
+        redirect_to "/explore"
     end
 
-    def show
-        @posts = Post.find(params[:id])
+    def unlike
+        post_id = params[:id]
+        Like.where(post_id: post_id, liker_id: @@user_id).destroy_all
+        redirect_to "/explore"
     end
-
-    def new
-        @post = Post.new
-    end
-
-    def create
-        @post = Post.new(article_params)
-        if @post.save
-        redirect_to @post
-        else
-        render :new, status: :unprocessable_entity
-        end
-    end
-
-    def edit
-        @post = Post.find(params[:id])
-    end
-    
-    def update
-        @post = Post.find(params[:id])
-
-        if @post.update(post_params)
-            redirect_to @post
-        else
-            render :edit, status: :unprocessable_entity
-        end
-    end
-
-    def destroy
-        @post = Post.find(params[:id])
-        @post.destroy
-        redirect_to root_path, status: :see_other
-    end
-
-    private
-        def post_params
-            params.require(:article).permit(:title, :body)
-        end
-    end
-
 end

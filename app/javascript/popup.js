@@ -1,9 +1,17 @@
-let popup = document.getElementById("popup");
-
 const openPopup = () => {
-  popup.classList.add("open-popup");
+  try {
+    let popup = document.getElementById("popup");
+    popup.classList.add("open-popup");
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const closePopup = () => {
-  popup.classList.remove("open-popup");
+  try {
+    let popup = document.getElementById("popup");
+    popup.classList.remove("open-popup");
+  } catch (e) {
+    console.log(e);
+  }
 };
