@@ -1,7 +1,0 @@
-<%= stylesheet_link_tag 'posts.css' %>
-
-<% if post[:isLiked] == true %>
-    <div class="button"><img id="likes-icon" src="<%= asset_path('like') %>" width="30" height="30"></div>
-<% else %>
-    <div class="button"><img id="likes-icon" src="<%= asset_path('unlike') %>" width="30" height="30"></div>
-<% end %>

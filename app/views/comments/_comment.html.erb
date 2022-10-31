@@ -1,0 +1,10 @@
+ <div class="col-xs-12 pad-0 button-container">
+    <p>
+        <strong>Commenter_id:</strong>
+        <%= comment.commenter_id %>
+
+        <strong>Comment:</strong>
+        <%= comment.comment %>
+    </p>
+    <%= link_to "Destroy", "/post/#{@post.id}/comments/#{comment.id}", method: :post, disabled: false %>
+<div>

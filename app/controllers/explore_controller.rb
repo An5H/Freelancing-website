@@ -7,15 +7,12 @@ class ExploreController < ApplicationController
         posts = Post.all
         @notifications = []
         @notification = Hash.new
-        @notification[:job_heading] = "Job Google"
-        @notification[:job_type] = "Engineer"
 
         posts.map do |post|
             post_ob = Hash.new
             post_ob[:isLiked] = get_is_liked(post)
             post_ob[:post] = post
             post_ob[:applied] = true
-            post_ob[:likes] = get_likes(post)
             @posts << post_ob
 
             notification_data = Hash.new
@@ -37,22 +34,6 @@ class ExploreController < ApplicationController
             true
         else
             false
-        end
-    end
-
-    def get_likes(post)
-        begin
-            likes = ""
-            likes_count = Like.where(post_id: post.id).count
-            if(likes_count > 1)
-                likes = likes_count.to_s + " likes"
-            elsif (likes_count == 1)
-                likes = likes_count.to_s + " like"
-            else
-                likes = "0 likes"
-            end
-        rescue
-            likes = "0 likes"
         end
     end
 

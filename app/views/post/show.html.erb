@@ -1,13 +1,73 @@
-<%= link_to "Open modal", "#my-modal", :class => "btn", "data-toggle" => "modal" %>
-<div class="modal hide fade" id="my-modal" title="My modal">
-  <div class="modal-header">
-    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+<%= stylesheet_link_tag 'posts.css' %>
+
+<div class="col-xs-12 post-container">
+  <div class="col-xs-12 pad-0 poster-details">
+    <div class="col-xs-2 poster-profile-pic"></div>
+
+    <div class="col-xs-6 poster-name"><%= @user.f_name%> <%= @user.l_name %></div>
+
+    <div class="col-xs-4 posted-date"><%= get_created_at(@post) %></div>
   </div>
-  <div class="modal-body">
-    Modal Body
+  <div class="col-xs-12 heading container">
+    <div class="job-heading col-xs-8"> <%= @post.job_heading %> </div>
+
+    <div class="job-type col-xs-4"><%= @post.job_type %></div>
   </div>
-  <div class="modal-footer">
-    <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+  <div class="col-xs-12 description container">
+      <%= @post.job_description %>
   </div>
+  <div class="col-xs-12 additional-info container">
+      <%= @post.additional_info %>
+  </div>
+
+  <div class="col-xs-12 pad-0 stats-container">
+    <div class="col-xs-3 pad-0">
+      <div class = "stats-container-buttons"><%= get_likes(@post.likes.count) %></div>
+    </div>
+    <div class="col-xs-3 pad-0">
+      <% if @post.comments.count > 0 %>
+        <div class = "stats-container-buttons"><%= get_comments_count(@post) %></div>
+      <% else %>
+        <div class = "stats-container-buttons"><%= "0 comments" %></div>
+      <% end %>
+    </div>
+    <div class="col-xs-3 pad-0"></div>
+    <div class="col-xs-3 pad-0">
+      <div class = "applied-container">50 Applied</div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 pad-0 button-container">
+    <div class="col-xs-3 pad-0">
+      <% if @isLiked == true %>
+        <%= button_to "Liked", "/post/#{@post.id}/unlike", method: :put, disabled: false %>
+      <% else %>
+        <%= button_to "Like", "/post/#{@post.id}/like", method: :put, disabled: false %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-3 pad-0">
+      <div class="button"><img id="comments-icon" src="<%= asset_path('comments') %>" width="30" height="30"></div>
+    </div>
+
+    <div class="col-xs-3 pad-0"></div>
+
+    <div class="col-xs-3 pad-0">
+      <% if @isApplied == true %>
+        <div class="apply-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
+      <% else %>
+        <div class="apply-button"><img id="likes-icon" src="<%= asset_path('apply') %>" width="30" height="30"></div>
+      <% end %>
+    </div>
+  </div>
+
+  <h2>Add a comment:</h2>
+  <%= render "/comments/form"%>
+
+  <% if @post.comments.count > 0 %>
+    <h2>Comments</h2>
+    <%= render @post.comments %>
+  <% else %>
+    <h2> No comments yet!</h2>
+  <% end %>
 </div>

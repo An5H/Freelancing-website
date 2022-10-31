@@ -13,4 +13,20 @@ module ExploreHelper
             time = created_at.localtime.strftime("%H:%M %p")
         end
     end
+
+    def get_likes(likes_count)
+        begin
+            likes = ""
+            if(likes_count > 1)
+                likes = likes_count.to_s + " likes"
+            elsif (likes_count == 1)
+                likes = likes_count.to_s + " like"
+            else
+                likes = "0 likes"
+            end
+        rescue
+            likes = "0 likes"
+        end
+    end
+    
 end

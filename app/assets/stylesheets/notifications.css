@@ -52,3 +52,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.poster-name a {
+  text-decoration: none;
+  color: rgb(24, 10, 10);
+  font-size: larger;
+  font-weight: 200;
+}

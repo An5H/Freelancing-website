@@ -14,6 +14,7 @@
     <div class="job-type col-xs-4"><%= post[:post].job_type %></div>
   </div>
   <div class="col-xs-12 description container">
+  
       <%= post[:post].job_description %>
   </div>
   <div class="col-xs-12 additional-info container">
@@ -22,10 +23,10 @@
 
   <div class="col-xs-12 pad-0 stats-container">
     <div class="col-xs-3 pad-0">
-      <div class = "stats-container-buttons"><%= post[:likes]%></div>
+      <div class = "stats-container-buttons"><%= get_likes(post[:post].likes.count) %></div>
     </div>
     <div class="col-xs-3 pad-0">
-      <div class = "stats-container-buttons">47 Comments</div>
+      <div class = "stats-container-buttons"><%= link_to get_comments_count(post[:post]), "/post/#{post[:post].id}" %></div>
     </div>
     <div class="col-xs-3 pad-0"></div>
     <div class="col-xs-3 pad-0">

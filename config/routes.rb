@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   #Routes for Posts
 
-  resources :post
+  resources :post do
+    resources :comments, :likes
+  end
 
   #like post
   put "/post/:id/like", to: "post#like"
@@ -17,6 +19,9 @@ Rails.application.routes.draw do
   #unlike post
   put "/post/:id/unlike", to: "post#unlike"
 
+  #Upload Profile Photo
+  post "/dash_board", to: "dash_board#uploadPicture"
+  
   #Routes for Dashboard page
   get "/dash_board", to: "dash_board#index"
 
