@@ -1,0 +1,25 @@
+<%= form_tag(model: @post) do %>
+  <div>
+    <%= label_tag :job_heading %><br>
+    <%= text_field_tag :job_heading %>
+  </div>
+
+  <div>
+    <%= label_tag :job_type %><br>
+    <%= text_field_tag :job_type %>
+  </div>
+
+  <div>
+    <%= label_tag :job_description %><br>
+    <%= text_area_tag :job_description %>
+  </div>
+
+  <div>
+    <%= label_tag :additional_info %><br>
+    <%= text_area_tag :additional_info %>
+  </div>
+
+  <div>
+    <%= submit_tag %>
+  </div>
+<% end %>

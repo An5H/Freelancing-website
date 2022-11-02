@@ -1,3 +1,7 @@
+<div class="col-xs-12">
+    <%= link_to "New Post", new_post_url %>
+</div>
+
 <% @posts.each do |post| %>
     <%= render partial: "components/posts/post", locals: {post: post}%>
 <% end %>

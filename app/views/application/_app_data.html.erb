@@ -1,0 +1,19 @@
+
+<% if !@applications.nil? %>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Job-Post</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date Applied</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @applications.each do |application| %>
+                <%= render partial: "data", locals: {app: application} %>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <%= "No Applications Yet!" %>
+<% end %>

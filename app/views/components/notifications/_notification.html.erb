@@ -1,14 +1,15 @@
 <%= stylesheet_link_tag 'notifications.css' %>
-<%# try to open a modal using bootstrap, create a button to trigger opening this modal, unique id to each modal %>
 <div class="notification" onclick="openPopup()">
     <div class="profile-pic"></div>
-
     <div class="data">
-      <div class="poster-name"><%= link_to notification[:post].job_heading, "/post/#{notification[:post].id}"%></div>
-      <div class="message">
-        <%= notification[:notification].first.message%>
-      </div>
+      <div class="poster-name"><%= link_to nf[:post].job_heading, "/post/#{nf[:post].id}"%></div>
+        <%# <div class="message">
+          <% if nf[:notification].first.nil? %>
+            <%# <%= "No message" %>
+          <%# <% else %>
+            <%# <%= nf[:notification].first.message %>
+          <%# <% end %>
+        <%# </div> %>
     </div>
-  </div>
-
-<%= javascript_include_tag "popup"%>
+</div>
+<%= javascript_include_tag "popup" %>

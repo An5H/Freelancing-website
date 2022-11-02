@@ -13,11 +13,23 @@ Rails.application.routes.draw do
     resources :comments, :likes
   end
 
+  #update post
+  patch 'post/:id', to: 'post#update'
+  
+  #new Post
+  post "/post/new", to: "post#create"
+
   #like post
   put "/post/:id/like", to: "post#like"
 
   #unlike post
   put "/post/:id/unlike", to: "post#unlike"
+
+  #delete post
+  get "/post/:id/delete", to: "post#destroy"
+
+  #apply post
+  get "/post/:id/apply", to: "post#apply"
 
   #Upload Profile Photo
   post "/dash_board", to: "dash_board#uploadPicture"

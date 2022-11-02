@@ -2,17 +2,17 @@ class ExploreController < ApplicationController
     # get this user_id of the user who logins
     @@current_user = 1
     def index
-        @user = User.find(@@current_user)
         @posts = []
         posts = Post.all
         @notifications = []
-        @notification = Hash.new
-
         posts.map do |post|
             post_ob = Hash.new
             post_ob[:isLiked] = get_is_liked(post)
             post_ob[:post] = post
-            post_ob[:applied] = true
+            post_ob[:isapplied] = get_is_applied(post)
+            post_ob[:poster_user] = get_job_poster_details(post)
+            post_ob[:applicants] = get_applicants(post)
+            post_ob[:poster_profile] = post_ob[:poster_user].profile
             @posts << post_ob
 
             notification_data = Hash.new
@@ -22,7 +22,6 @@ class ExploreController < ApplicationController
             end
             notification_data[:post] = post
             notification_data[:job_poster_details] = get_job_poster_details(post)
-
             @notifications << notification_data
         end
     end
@@ -52,6 +51,24 @@ class ExploreController < ApplicationController
             user
         else
             []
+        end
+    end
+
+    def get_is_applied(post)
+        isapplied = Application.where(post_id: post.id, applicant_id: @@current_user).count > 0 ? true : false
+        if(isapplied)
+            true
+        else
+            false
+        end
+    end
+
+    def get_applicants(post)
+        isapplied = Application.where(post_id: post.id)
+        if(isapplied.count > 0)
+            isapplied.count
+        else
+            0
         end
     end
 end
