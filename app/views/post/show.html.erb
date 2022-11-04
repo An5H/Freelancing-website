@@ -6,7 +6,7 @@
 
     <div class="col-xs-6 poster-name"><%= @user.f_name%> <%= @user.l_name %></div>
 
-    <div class="col-xs-4 posted-date"><%= get_created_at(@post) %></div>
+    <div class="col-xs-4 posted-date"><%= get_created_at(@post.created_at) %></div>
   </div>
   <div class="col-xs-12 heading container">
     <div class="job-heading col-xs-8"> <%= @post.job_heading %> </div>
@@ -40,9 +40,9 @@
   <div class="col-xs-12 pad-0 button-container">
     <div class="col-xs-3 pad-0">
       <% if @isLiked == true %>
-        <%= button_to "Liked", "/post/#{@post.id}/unlike", method: :put, disabled: false %>
+          <a href=<%="/post/#{@post.id}/unlike" %>><img id="likes-icon" src="<%= asset_path('like') %>" width="30" height="30"></a>
       <% else %>
-        <%= button_to "Like", "/post/#{@post.id}/like", method: :put, disabled: false %>
+        <a href=<%="/post/#{@post.id}/like" %>><img id="likes-icon" src="<%= asset_path('unlike') %>" width="30" height="30"></a>
       <% end %>
     </div>
 
@@ -54,20 +54,27 @@
 
     <div class="col-xs-3 pad-0">
       <% if @isApplied == true %>
-        <div class="applied-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
+        <div class="apply-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
       <% else %>
         <a href=<%="/post/#{@post.id}/apply"%>><div class="apply-button"><img id="likes-icon" src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
       <% end %>
     </div>
   </div>
 
-  <h2>Add a comment:</h2>
-  <%= render "/comments/form"%>
-
-  <% if @post.comments.count > 0 %>
-    <h2>Comments</h2>
-    <%= render @post.comments %>
-  <% else %>
-    <h2> No comments yet!</h2>
-  <% end %>
+  <div class="col-xs-12">
+    <div class="col-xs-4 pad-0">
+      <h2>Add a comment:</h2>
+      <%= render "/comments/form"%>
+      <% if @post.comments.count > 0 %>
+        <h2>Comments</h2>
+        <%= render @post.comments %>
+      <% else %>
+        <h2> No comments yet!</h2>
+      <% end %>
+    </div>
+    <div class="col-xs-8 pad-0">
+      <%= render "post/applications/applicants_layout"%>
+    </div>
+  </div>
+  
 </div>

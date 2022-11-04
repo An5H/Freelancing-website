@@ -1,7 +1,6 @@
 module ExploreHelper
-    def get_created_at(post)
+    def get_created_at(created_at)
         current_time = Time.now
-        created_at = post.created_at
         time_diff = current_time.day - created_at.day
         if(time_diff == 0)
             time = "Today " + created_at.localtime.strftime("%H:%M %p").to_s
@@ -10,7 +9,7 @@ module ExploreHelper
             time = "Yesterday " + created_at.localtime.strftime("%H:%M %p").to_s
 
         else
-            time = created_at.localtime.strftime("%H:%M %p")
+            time = created_at.localtime.strftime("%H:%M %p").to_s
         end
     end
 

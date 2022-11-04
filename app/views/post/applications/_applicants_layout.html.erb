@@ -1,0 +1,24 @@
+<% if @isPostOwner == true %>
+    <% if @applicants_data.empty? || @applicants_data.size == 0 %>
+        <h2>No Applicants Yet!!</h2>
+    <% else %>
+        <h1>Applications</h1>
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">S.no.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Date Applied</th>
+                <th scope="col">Decision</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @applicants_data.each_with_index do |applicant, index| %>
+                <%= render partial: "post/applications/applicant", locals: {applicant: applicant, index: index+1} %>
+            <% end %>     
+        </tbody>
+    </table>
+    <% end %>
+<% end %>

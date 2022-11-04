@@ -13,6 +13,15 @@ Rails.application.routes.draw do
     resources :comments, :likes
   end
 
+  #route to user profile
+  get "/profile/:username", to: "profile#user"
+
+  #accept a candidate
+  get "/post/:post_id/user/:user_id/accept", to: "application#accept"
+
+  #reject a candidate
+  get "/post/:post_id/user/:user_id/reject", to: "application#reject"
+
   #update post
   patch 'post/:id', to: 'post#update'
   
@@ -20,10 +29,10 @@ Rails.application.routes.draw do
   post "/post/new", to: "post#create"
 
   #like post
-  put "/post/:id/like", to: "post#like"
+  get "/post/:id/like", to: "post#like"
 
   #unlike post
-  put "/post/:id/unlike", to: "post#unlike"
+  get "/post/:id/unlike", to: "post#unlike"
 
   #delete post
   get "/post/:id/delete", to: "post#destroy"

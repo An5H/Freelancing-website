@@ -3,9 +3,9 @@
     <% if !get_post(app.post_id).nil? %>
       <a href=<%="/post/#{app.post_id}"%>><%= get_post(app.post_id).job_heading %></a>
     <% else %>
-      <%= "Post Unavailable" %>
+      <%= "Job Post Unavailable" %>
     <% end %>
   </td>
   <td><%= app.status %></td>
-  <td><%= app.created_at %></td>
+  <td><%= get_created_at(app.created_at) %></td>
 </tr>

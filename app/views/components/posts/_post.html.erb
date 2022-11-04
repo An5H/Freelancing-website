@@ -12,7 +12,7 @@
 
     <div class="col-xs-4 poster-name"><%= post[:poster_user].f_name%> <%= post[:poster_user].l_name %></div>
 
-    <div class="col-xs-4 posted-date"><%= get_created_at(post[:post]) %></div>
+    <div class="col-xs-4 posted-date"><%= get_created_at(post[:post].created_at) %></div>
     <div class="col-xs-1"> <%= link_to "Edit", edit_post_path(post[:post]) %> </div>
     <div class="col-xs-2"> <%= link_to "Delete", "/post/#{post[:post].id}/delete" %></div>
   </div>
@@ -45,9 +45,9 @@
   <div class="col-xs-12 pad-0 button-container">
     <div class="col-xs-3 pad-0">
       <% if post[:isLiked] == true %>
-        <%= button_to "Liked", "/post/#{post[:post].id}/unlike", method: :put, disabled: false %>
+          <a href=<%="/post/#{post[:post].id}/unlike" %>><img id="likes-icon" src="<%= asset_path('like') %>" width="30" height="30"></a>
       <% else %>
-        <%= button_to "Like", "/post/#{post[:post].id}/like", method: :put, disabled: false %>
+        <a href=<%="/post/#{post[:post].id}/like" %>><img id="likes-icon" src="<%= asset_path('unlike') %>" width="30" height="30"></a>
       <% end %>
     </div>
 
@@ -59,7 +59,7 @@
 
     <div class="col-xs-3 pad-0">
       <% if post[:isapplied] == true %>
-        <div class="applied-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
+        <div class="apply-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
       <% else %>
         <a href=<%="/post/#{post[:post].id}/apply"%>><div class="apply-button"><img id="likes-icon" src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
       <% end %>

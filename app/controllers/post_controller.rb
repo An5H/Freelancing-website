@@ -2,23 +2,37 @@ class PostController < ApplicationController
     @@user_id = 1
     def like
         @post = Post.all.find(params[:id])
-        @like = @post.likes.create(liker_id: @@user_id, post_id: @post.id)
-        redirect_to post_path(@post)
+        #check if already liked
+        isLiked = Like.where(liker_id: @@user_id, post_id: @post.id).count > 0 ? true : false
+        if(isLiked) 
+            puts "Already liked"
+            redirect_to "/explore"
+        else
+            @like = @post.likes.create(liker_id: @@user_id, post_id: @post.id)
+            redirect_to post_path(@post)
+        end
     end
 
     def unlike
         @post = Post.all.find(params[:id])
-        Like.where(post_id: @post.id, liker_id: @@user_id).destroy_all
-        redirect_to post_path(@post)
+        isLiked = Like.where(liker_id: @@user_id, post_id: @post.id).count > 0 ? true : false
+        if(isLiked)
+            Like.where(post_id: @post.id, liker_id: @@user_id).destroy_all
+            redirect_to post_path(@post)
+        else
+            puts "Could not unlike, if not liked already"
+            redirect_to "/explore"
+        end
     end
 
     def show
         @post = Post.all.find(params[:id])
         @user = @post.user
         @isLiked = get_is_liked(@post)
-        # complete this feature
         @isApplied = get_is_applied(@post)
-        @applicants = get_applicants(@post)
+        @applicants_data = get_applicant_users(@post)
+        @applicants = @applicants_data.size
+        @isPostOwner = get_is_post_owner(@post)
     end
 
     def new
@@ -56,17 +70,16 @@ class PostController < ApplicationController
     end
 
     def apply
-        @post = Post.find(params[:id])
-        
+        @post = Post.find(params[:id]) 
         # check if already applied
         isalreadyApplied = Application.where(post_id: @post.id, applicant_id: @@user_id).count > 0 ? true : false
 
         if(!isalreadyApplied)
             @applied = Application.create(post_id: @post.id, applicant_id: @@user_id, status: "In Progress")
-            redirect_to post_path(@post)
+            redirect_to "/explore"
         else
             puts "Application already applied"
-            redirect_to post_path(@post)
+            redirect_to "/explore"
         end
     end
 
@@ -93,12 +106,48 @@ class PostController < ApplicationController
         end
     end
 
-    def get_applicants(post)
-        isapplied = Application.where(post_id: post.id)
-        if(isapplied.count > 0)
-            isapplied.count
+    def get_applicant_users(post)
+        job_post = Application.where(post_id: post.id)
+        app_data = []
+        job_post.each do |user|
+            user_data = Hash.new
+            cur_user = User.where(id: user.applicant_id)
+            user_data[:user] = cur_user.first
+            user_data[:status] = get_application_status(user.applicant_id, post.id)
+            user_data[:applied_at] = get_applied_at(user.applicant_id, post.id)
+            app_data << user_data
+        end
+
+        if(app_data.empty?)
+            []
         else
-            0
+            app_data
+        end
+    end
+
+    def get_application_status(userId, postId)
+        application = Application.where(applicant_id: userId, post_id: postId)
+        if(!application.nil? && application.count > 0)
+            status = application.first.status
+        else
+            status = "Job Post Unavailable"
+        end
+    end
+
+    def get_applied_at(userId, postId)
+        application = Application.where(applicant_id: userId, post_id: postId)
+        if(!application.nil? && application.count > 0)
+            applied_at = application.first.created_at
+        else
+            applied_at = "Data unavailable"
+        end
+    end
+
+    def get_is_post_owner(post)
+        if(post.user_id == @@user_id)
+            true
+        else
+            false
         end
     end
 end

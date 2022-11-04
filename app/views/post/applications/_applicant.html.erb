@@ -1,0 +1,22 @@
+<tr>
+    <th scope="row"><%= index %></th>
+    <td><a href= <%="/profile/#{applicant[:user].username}"%>><%= applicant[:user].f_name %> <%= applicant[:user].l_name %></td></a>
+    <td><%= applicant[:user].email %></td>
+    <td><%= applicant[:status]%></td>
+    <% if applicant[:applied_at].is_a? String %>
+        <td><%= applicant[:applied_at] %></td>
+    <% else %>
+        <td><%= get_created_at(applicant[:applied_at])%></td>
+    <% end %>
+
+    <% if applicant[:status] == "In Progress" %>
+        <td>
+            <a href=<%="/post/#{@post.id}/user/#{applicant[:user].id}/accept" %>><img id="likes-icon" src="<%= asset_path('accept-tick') %>" width="30" height="30"></a>
+            <a href=<%="/post/#{@post.id}/user/#{applicant[:user].id}/reject" %>><img id="likes-icon" src="<%= asset_path('cross-icon') %>" width="30" height="30"></a>
+        </td>
+    <% elsif applicant[:status] == "Accepted" %>
+        <td><img id="likes-icon" src="<%= asset_path('accept-tick') %>" width="30" height="30"> Accepted </td>
+    <% else %>
+        <td><img id="likes-icon" src="<%= asset_path('cross-icon') %>" width="30" height="30"> Rejected </td>
+    <% end %>
+</tr>
