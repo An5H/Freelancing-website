@@ -8,3 +8,4 @@
 //= link header.css
 //= link popup.js
 //= link dashboard.css
+//= link profile.css

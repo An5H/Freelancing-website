@@ -14,7 +14,21 @@
   width: max-content;
 }
 
-.notification {
+.notification-unread {
+  width: 100%;
+  min-height: 100px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: white;
+  border-radius: 7px;
+  background-color: rgb(182, 247, 129);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.notification-read {
   width: 100%;
   min-height: 100px;
   margin-top: 20px;
@@ -51,6 +65,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #252525;
 }
 
 .poster-name a {

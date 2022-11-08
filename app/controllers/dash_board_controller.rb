@@ -1,5 +1,5 @@
 class DashBoardController < ApplicationController
-  @@user_id = 1
+  @@user_id = 2
   def index
     @user = User.find(@@user_id)
     @profile = @user.profile

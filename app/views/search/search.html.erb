@@ -1,0 +1,39 @@
+<% if @results.nil? || @results.empty? %>
+    <%= "No search Results Available for the query '#{params[:query]}!'" %>
+<% else %>
+    <% if params[:field] == "candidate" %>
+        <h1>Search Results for Users!</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Profession</th>
+                <th scope="col">Rating</th>
+                </tr>
+            </thead>
+            <% @results.each do |result| %>
+                <tbody>
+                    <%= render partial: "/search/candidate", locals: {user: result}%>
+                </tbody>
+            <% end %>
+        </table>
+    <% elsif params[:field] == "job"%>
+        <h1>Search Results for Job Posts!</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Job Post</th>
+                <th scope="col">Type</th>
+                <th scope="col">Job Poster</th>
+                <th scope="col">Date Published</th>
+                </tr>
+            </thead>
+            <% @results.each do |result| %>
+                <tbody>
+                    <%= render partial: "/search/job", locals: {jobpost: result}%>
+                </tbody>
+            <% end %>
+        </table>
+    <% end %>
+<% end %>

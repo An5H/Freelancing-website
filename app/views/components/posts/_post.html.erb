@@ -38,7 +38,7 @@
     </div>
     <div class="col-xs-3 pad-0"></div>
     <div class="col-xs-3 pad-0">
-      <div class = "applied-container"><%= post[:applicants].to_s + " Applied" %></div>
+      <div class = "applied-container"><%= post[:applicants].to_s + " Applications" %></div>
     </div>
   </div>
 
@@ -59,9 +59,9 @@
 
     <div class="col-xs-3 pad-0">
       <% if post[:isapplied] == true %>
-        <div class="apply-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
+        <div class="applied-button"><img src="<%= asset_path('applied') %>" width="30" height="30"><div style="margin-left: 10px">Applied</div></div>
       <% else %>
-        <a href=<%="/post/#{post[:post].id}/apply"%>><div class="apply-button"><img id="likes-icon" src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
+        <a href=<%="/post/#{post[:post].id}/apply"%>><div class="apply-button"><img src="<%= asset_path('apply') %>" width="30" height="30"><div style="margin-left: 10px">Apply ?</div></div></a>
       <% end %>
     </div>
   </div>

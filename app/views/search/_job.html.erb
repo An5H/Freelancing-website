@@ -1,0 +1,6 @@
+<tr>
+    <td><a href = <%= post_path(jobpost) %>><%= jobpost.job_heading %></a></td>
+    <td><%= jobpost.job_type %></td>
+    <td><a href= <%="/profile/#{jobpost.user.username}"%>><%= jobpost.user.f_name %> <%= jobpost.user.l_name %></a></td>
+    <td><%= get_created_at(jobpost.created_at) %></td>
+</tr>

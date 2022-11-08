@@ -1,1 +1,93 @@
-<%= "Hey there welcome #{@user}"%>
+<%= stylesheet_link_tag 'profile.css' %>
+<div class="container">
+    <div class="main-body"> 
+        <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <% if @profile.image.attached? %>
+                            <%= image_tag @profile.image, class: "dashb-profile-pic"%>
+                        <% else %>
+                            <img class="dashb-profile-pic" src="<%= asset_path('/assets/no-profile-pic.png') %>">
+                        <% end %>
+                        <div class="mt-4">
+                            <h4><%= @user.f_name %> <%= @user.l_name %></h4>
+                            <p class="text-secondary mb-1"><%= @profile.profession %></p>
+                            <p class="text-muted font-size-sm"><%= @profile.state %>, <%= @profile.country %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Full Name</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @user.f_name %> <%= @user.l_name %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Email</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @user.email %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Phone</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @profile.contact_number %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Profession</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @profile.profession %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Experience</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @profile.experience %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Rating</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @profile.rating%>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5 class="mb-0 heading">Address</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= @profile.state %>, <%= @profile.country %>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

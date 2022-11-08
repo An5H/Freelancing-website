@@ -97,6 +97,12 @@
   cursor: pointer;
 }
 
+.applied-button {
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
 img {
   color: grey;
 }

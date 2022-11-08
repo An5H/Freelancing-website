@@ -1,8 +1,6 @@
 .header {
-  min-height: 100px !important  ;
-
+  min-height: 130px !important  ;
   display: flex;
-
   align-items: center;
   background-color: rgb(218, 216, 216);
   position: fixed;
@@ -12,47 +10,32 @@
 
 .app-logo {
   width: 70px;
-
   height: 70px;
-
   background-color: grey;
-
   border-radius: 50%;
 }
 
 .search-bar {
   all: unset;
-
   width: 70%;
-
   border: 1px solid grey;
-
   min-height: 40px;
-
   border-radius: 7px;
-
   font-size: 17px;
-
   padding-left: 10px;
 }
 
 .profile-container {
   display: flex;
-
   align-items: center;
-
   justify-content: right;
 }
 
 .profile-pic {
   width: 50px;
-
   height: 50px;
-
   background-color: grey;
-
   border-radius: 50%;
-
   margin-right: 20px;
 }
 

@@ -1,15 +1,27 @@
 <%= stylesheet_link_tag 'notifications.css' %>
-<div class="notification" onclick="openPopup()">
-    <div class="profile-pic"></div>
-    <div class="data">
-      <div class="poster-name"><%= link_to nf[:post].job_heading, "/post/#{nf[:post].id}"%></div>
-        <%# <div class="message">
-          <% if nf[:notification].first.nil? %>
-            <%# <%= "No message" %>
-          <%# <% else %>
-            <%# <%= nf[:notification].first.message %>
-          <%# <% end %>
-        <%# </div> %>
-    </div>
-</div>
-<%= javascript_include_tag "popup" %>
+  
+<% if nf[:notification].status == "unread"%>  
+  <div class="notification-unread">
+      <div class="profile-pic"></div>
+      <div class="data">     
+        <div class="poster-name">
+          <%= link_to nf[:post].job_heading, post_path(nf[:post])%>
+        </div>
+        <div class="message">
+          <%= nf[:notification].message %>
+        </div>
+      </div>
+  </div>
+<% else %> 
+  <div class="notification-read">
+      <div class="profile-pic"></div>
+      <div class="data">     
+        <div class="poster-name">
+          <%= link_to nf[:post].job_heading, post_path(nf[:post])%>
+        </div>
+        <div class="message">
+          <%= nf[:notification].message %>
+        </div>
+      </div>
+  </div>
+<% end %>

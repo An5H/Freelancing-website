@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
     def user
-        @user = params[:username]
-        puts "Welcome #{@user}"
+        @user = User.find_by(username: params[:username])
+        @profile = @user.profile
     end
 end

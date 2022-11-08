@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-    @@user_id = 1
+    @@user_id = 2
     def like
         @post = Post.all.find(params[:id])
         #check if already liked
@@ -33,6 +33,11 @@ class PostController < ApplicationController
         @applicants_data = get_applicant_users(@post)
         @applicants = @applicants_data.size
         @isPostOwner = get_is_post_owner(@post)
+
+        @notification = Notification.where(user_id: @@user_id, post_id: @post.id).first
+        if(!@notification.nil? && @notification.status == "unread")
+            @notification.update(status: "read")
+        end
     end
 
     def new

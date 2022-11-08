@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "explore#index"
+  root "user#index"
+
+  devise_for :users
+
+  # #routes for authentication
+  # resources :user
+  # get 'login', to: 'session#new'   
+  # post 'login', to: 'session#create'   
 
   # Routes for Explore page
   resources :explore
@@ -12,6 +19,9 @@ Rails.application.routes.draw do
   resources :post do
     resources :comments, :likes
   end
+
+  #route for Search
+  get "/search", to: "search#search"
 
   #route to user profile
   get "/profile/:username", to: "profile#user"
