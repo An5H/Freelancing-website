@@ -1,2 +1,0 @@
-class LikesofcommentController < ApplicationController
-end
