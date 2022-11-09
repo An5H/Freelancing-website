@@ -2,7 +2,7 @@
 
 <div class="col-xs-12 header">
     <div class="col-xs-2">
-      <div class="app-logo"></div>
+        <a href="/explore"><%= image_tag("/assets/logo.png", class: "app-logo")%></a>
     </div>
 
     <div class="col-xs-7">
@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-xs-3 profile-container">
-      <div class="profile-pic"></div>
+      <%= image_tag check_avatar(current_user.profile), class: "profile-pic"%>
       <div class="name"><%= current_user.f_name %> <%= current_user.l_name %></div>
     </div>
 </div>

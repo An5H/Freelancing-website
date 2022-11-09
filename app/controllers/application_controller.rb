@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+    def index
+        @applications = Application.where(applicant_id: current_user.id)
+    end
+
     def accept
         @post = Post.find(params[:post_id])
         application = Application.where(applicant_id: params[:user_id], post_id: params[:post_id])
