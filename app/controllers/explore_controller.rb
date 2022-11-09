@@ -1,6 +1,5 @@
 class ExploreController < ApplicationController
     # get this user_id of the user who logins
-    @@user_id = 2
     def index
         @posts = []
         posts = Post.all
@@ -17,7 +16,7 @@ class ExploreController < ApplicationController
 
             notification_data = Hash.new
             notification = get_notification(post)
-            if notification.count != 0 and notification != []
+            if !notification.nil? && notification.count != 0 && notification != []
                 notification_data[:notification] = notification.first
                 notification_data[:post] = post
                 @notifications << notification_data
@@ -27,7 +26,10 @@ class ExploreController < ApplicationController
 
     private
     def get_is_liked(post)
-        isLiked = Like.where(post_id: post.id, liker_id: @@user_id).count
+        isLiked = 0
+        if user_signed_in?
+            isLiked = Like.where(post_id: post.id, liker_id: current_user.id).count
+        end
         if(isLiked > 0)
             true
         else
@@ -36,11 +38,11 @@ class ExploreController < ApplicationController
     end
 
     def get_notification(post)
-        nfs = Notification.where(post_id: post.id, user_id: @@user_id)
-        if(nfs.count > 0)
-            nfs
+        nfs = []
+        if user_signed_in?
+            nfs = Notification.where(post_id: post.id, user_id: current_user.id)
         else
-            []
+            nfs
         end
     end
 
@@ -54,11 +56,9 @@ class ExploreController < ApplicationController
     end
 
     def get_is_applied(post)
-        isapplied = Application.where(post_id: post.id, applicant_id: @@user_id).count > 0 ? true : false
-        if(isapplied)
-            true
-        else
-            false
+        is_applied = false
+        if user_signed_in?
+            isapplied = Application.where(post_id: post.id, applicant_id: current_user.id).count > 0 ? true : false
         end
     end
 

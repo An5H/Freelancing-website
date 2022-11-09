@@ -1,0 +1,90 @@
+<%= stylesheet_link_tag 'profile.css' %>
+<div class="container">
+    <div class="main-body">
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <%= image_tag check_avatar(@profile), class: "dashb-profile-pic"%>
+                <div class="mt-3">
+                  <h4><%= @user.f_name %> <%= @user.l_name %></h4>
+                  <p class="text-secondary mb-1"><%= @profile.profession %></p>
+                  <p class="text-muted font-size-sm"><%= @profile.state %>, <%= @profile.country %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">Full Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @user.f_name %> <%= @user.l_name %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @user.email %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">D.O.B</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @user.date_of_birth %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">Profession</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @profile.profession %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">Rating</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @profile.rating %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">Mobile</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @profile.contact_number %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 heading">Address</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= @profile.state %>, <%= @profile.country %>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

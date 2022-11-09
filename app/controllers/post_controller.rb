@@ -1,23 +1,22 @@
 class PostController < ApplicationController
-    @@user_id = 2
     def like
         @post = Post.all.find(params[:id])
         #check if already liked
-        isLiked = Like.where(liker_id: @@user_id, post_id: @post.id).count > 0 ? true : false
+        isLiked = Like.where(liker_id: current_user.id, post_id: @post.id).count > 0 ? true : false
         if(isLiked) 
             puts "Already liked"
             redirect_to "/explore"
         else
-            @like = @post.likes.create(liker_id: @@user_id, post_id: @post.id)
+            @like = @post.likes.create(liker_id: current_user.id, post_id: @post.id)
             redirect_to post_path(@post)
         end
     end
 
     def unlike
         @post = Post.all.find(params[:id])
-        isLiked = Like.where(liker_id: @@user_id, post_id: @post.id).count > 0 ? true : false
+        isLiked = Like.where(liker_id: current_user.id, post_id: @post.id).count > 0 ? true : false
         if(isLiked)
-            Like.where(post_id: @post.id, liker_id: @@user_id).destroy_all
+            Like.where(post_id: @post.id, liker_id: current_user.id).destroy_all
             redirect_to post_path(@post)
         else
             puts "Could not unlike, if not liked already"
@@ -34,7 +33,7 @@ class PostController < ApplicationController
         @applicants = @applicants_data.size
         @isPostOwner = get_is_post_owner(@post)
 
-        @notification = Notification.where(user_id: @@user_id, post_id: @post.id).first
+        @notification = Notification.where(user_id: current_user.id, post_id: @post.id).first
         if(!@notification.nil? && @notification.status == "unread")
             @notification.update(status: "read")
         end
@@ -46,7 +45,7 @@ class PostController < ApplicationController
 
     def create
         # @post = Post.new(post_params)
-        @post = Post.new(user_id: @@user_id, job_heading: params[:job_heading], job_type: params[:job_type], job_description: params[:job_description], additional_info: params[:additional_info])
+        @post = Post.new(user_id: current_user.id, job_heading: params[:job_heading], job_type: params[:job_type], job_description: params[:job_description], additional_info: params[:additional_info])
         if @post.save
             redirect_to @post
         else
@@ -77,10 +76,10 @@ class PostController < ApplicationController
     def apply
         @post = Post.find(params[:id]) 
         # check if already applied
-        isalreadyApplied = Application.where(post_id: @post.id, applicant_id: @@user_id).count > 0 ? true : false
+        isalreadyApplied = Application.where(post_id: @post.id, applicant_id: current_user.id).count > 0 ? true : false
 
         if(!isalreadyApplied)
-            @applied = Application.create(post_id: @post.id, applicant_id: @@user_id, status: "In Progress")
+            @applied = Application.create(post_id: @post.id, applicant_id: current_user.id, status: "In Progress")
             redirect_to "/explore"
         else
             puts "Application already applied"
@@ -94,7 +93,7 @@ class PostController < ApplicationController
     end
 
     def get_is_liked(post)
-        isLiked = Like.where(post_id: post.id, liker_id: @@user_id).count
+        isLiked = Like.where(post_id: post.id, liker_id: current_user.id).count
         if(isLiked > 0)
             true
         else
@@ -103,7 +102,7 @@ class PostController < ApplicationController
     end
 
     def get_is_applied(post)
-        isapplied = Application.where(post_id: post.id, applicant_id: @@user_id).count > 0 ? true : false
+        isapplied = Application.where(post_id: post.id, applicant_id: current_user.id).count > 0 ? true : false
         if(isapplied)
             true
         else
@@ -149,7 +148,7 @@ class PostController < ApplicationController
     end
 
     def get_is_post_owner(post)
-        if(post.user_id == @@user_id)
+        if(post.user_id == current_user.id)
             true
         else
             false

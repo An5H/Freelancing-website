@@ -3,11 +3,7 @@
 <div class="col-xs-12 post-container">
   <div class="col-xs-12 pad-0 poster-details">
     <div class="col-xs-2">
-      <% if post[:poster_profile].image.attached? %>
-        <%= image_tag post[:poster_profile].image, class: "poster-profile-pic"%>
-      <% else %>
-        <img class="poster-profile-pic" src="<%= asset_path('/assets/no-profile-pic.png') %>">
-      <% end %>
+      <%= image_tag check_avatar(post[:poster_user].profile), class: "poster-profile-pic"%>
     </div>
 
     <div class="col-xs-4 poster-name"><%= post[:poster_user].f_name%> <%= post[:poster_user].l_name %></div>

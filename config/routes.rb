@@ -2,29 +2,25 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "user#index"
+  root "explore#index"
 
   devise_for :users
-
-  # #routes for authentication
-  # resources :user
-  # get 'login', to: 'session#new'   
-  # post 'login', to: 'session#create'   
 
   # Routes for Explore page
   resources :explore
 
   #Routes for Posts
-
   resources :post do
     resources :comments, :likes
   end
+
+  resources :dash_board
 
   #route for Search
   get "/search", to: "search#search"
 
   #route to user profile
-  get "/profile/:username", to: "profile#user"
+  get "/profile/:username", to: "profile#show"
 
   #accept a candidate
   get "/post/:post_id/user/:user_id/accept", to: "application#accept"
@@ -49,9 +45,6 @@ Rails.application.routes.draw do
 
   #apply post
   get "/post/:id/apply", to: "post#apply"
-
-  #Upload Profile Photo
-  post "/dash_board", to: "dash_board#uploadPicture"
   
   #Routes for Dashboard page
   get "/dash_board", to: "dash_board#index"

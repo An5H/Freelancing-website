@@ -1,18 +1,19 @@
 <%= stylesheet_link_tag 'explore-main.css' %>
 
-<!-- Logo and Search Bar -->
-<%= render '/common/header'%>
-
-<!-- Sidebar, Feed, Notifications -->
-<div class="col-xs-12 content-container">
-  <div class="col-xs-3 sidebar-container">
-    <%= render '/common/sidebar'%>
-  </div>
-  <div class="col-xs-6 feed">
-  
-    <%= render 'components/posts/post-layout'%>
-  </div>
-  <div class="col-xs-3 notifications">
-    <%= render 'components/notifications/notification-tab'%>
-  </div>
-</div>
+<% if user_signed_in? %>
+    <%= render '/common/header'%>
+    <div class="col-xs-12 content-container">
+      <div class="col-xs-3 sidebar-container">
+        <%= render '/common/sidebar'%>
+      </div>
+      <div class="col-xs-6 feed">
+      
+        <%= render 'components/posts/post-layout'%>
+      </div>
+      <div class="col-xs-3 notifications">
+        <%= render 'components/notifications/notification-tab'%>
+      </div>
+    </div>
+<% else %>
+    <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+<% end %>

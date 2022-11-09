@@ -1,0 +1,27 @@
+<h1>Edit Post</h1>
+
+<%= form_with model: @profile, url: dash_board_path(@profile), method: :patch, local: true do |f| %>
+  <div>
+    <%= f.label :profession %><br>
+    <%= f.text_field :profession %>
+  </div>
+
+  <div>
+    <%= f.label :contact_number %><br>
+    <%= f.text_field :contact_number %>
+  </div>
+
+  <div>
+    <%= f.label :state %><br>
+    <%= f.text_area :state %>
+  </div>
+
+  <div>
+    <%= f.label :country %><br>
+    <%= f.text_area :country %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

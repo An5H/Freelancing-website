@@ -2,6 +2,10 @@
     <%= link_to "New Post", new_post_url %>
 </div>
 
-<% @posts.each do |post| %>
-    <%= render partial: "components/posts/post", locals: {post: post}%>
+<% if @posts.nil? || @posts.empty? %>
+    <%= "No Posts Yet!" %>
+<% else %>
+    <% @posts.each do |post| %>
+        <%= render partial: "components/posts/post", locals: {post: post}%>
+    <% end %>
 <% end %>

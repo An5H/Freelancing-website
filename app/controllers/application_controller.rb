@@ -1,23 +1,5 @@
 class ApplicationController < ActionController::Base
-    # before_action :authorized
-    # helper_method :current_user
-    # helper_method :logged_in?
-
-    # def current_user        
-    #     User.find_by(id: session[:user_id])  
-    # end
-
-    # def logged_in?   
-    #     !current_user.nil?  
-    # end
-
-    # def authorized   
-    #     redirect_to '/explore' unless logged_in?
-    # end
-
-    def index
-        @applications = Application.where(applicant_id: @@user_id)
-    end
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
     def accept
         @post = Post.find(params[:post_id])
@@ -38,4 +20,10 @@ class ApplicationController < ActionController::Base
         @notification = Notification.create(user_id: params[:user_id], post_id: params[:post_id], message: "Thankyou for applying to this position, but we are sorry to inform you that, we don't find your skills to be right fit for the job", status: "unread")
         redirect_to post_path(@post)
     end
+
+    protected
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:f_name, :l_name, :username])
+    end
+
 end

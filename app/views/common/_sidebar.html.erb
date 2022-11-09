@@ -4,4 +4,4 @@
 <div class="sidebar"><%= link_to "Dashboard", "/dash_board" %></div>
 <div class="sidebar"><%= link_to "Applications", "/application" %></div>
 <div class="sidebar"><%= link_to "Settings", "/settings" %></div>
-<div class="sidebar"><%= link_to "Logout", "/logout" %></div>
+<div class="sidebar"><%= button_to "Logout", destroy_user_session_path, method: :delete%></div>
