@@ -52,9 +52,6 @@ Rails.application.routes.draw do
   #Route for Applications page
   get "/application", to: "application#index"
 
-  #Routes for Settings page
-  get "/settings", to: "settings#index"
-
   #Route for Logout
   get "/logout", to: "logout#index"
 

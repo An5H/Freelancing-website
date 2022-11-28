@@ -1,5 +1,18 @@
+<%= stylesheet_link_tag 'newPost.css' %>
+
 <div class="col-xs-12">
-    <%= link_to "New Post", new_post_url %>
+    <div class="card">
+        <div class="col-xs-12 card-body">
+             <div class="col-xs-2">
+                <%= image_tag check_avatar(current_user.profile), class: "post-profile-pic"%>
+            </div>
+            <div class="col-xs-10 newpost-button">
+               <a class="start-post" href=<%= new_post_url %> >
+                Hey <%= current_user.f_name %>, looking for someone ?
+               </a>
+          </div>      
+        </div>
+    </div>
 </div>
 
 <% if @posts.nil? || @posts.empty? %>

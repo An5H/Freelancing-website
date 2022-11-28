@@ -1,0 +1,154 @@
+textarea {
+  width: 350px;
+}
+
+@media (min-width: 568px) {
+  .end {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #post {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 872px;
+  }
+}
+
+#clicked {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  text-align: center;
+  width: 100%;
+  background-color: #ecb21f;
+  border-color: #a88734 #9c7e31 #846a29;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 13px;
+}
+
+#profile {
+  background-color: unset;
+}
+
+#post {
+  margin: 10px;
+  padding: 6px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: center;
+  background-color: #ecb21f;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: rgb(248, 244, 244);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 13px;
+  width: 50%;
+}
+
+body {
+  background-color: black;
+}
+
+#nav-items li a,
+#profile {
+  text-decoration: none;
+}
+
+.comments {
+  margin-top: 5%;
+  margin-left: 20px;
+}
+
+.darker {
+  border: 1px solid #ecb21f;
+  float: right;
+  border-radius: 5px;
+  padding-left: 40px;
+  padding-right: 30px;
+  padding-top: 10px;
+}
+
+.comment {
+  background-color: #ccc8c8;
+  float: left;
+  border-radius: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  padding-top: 10px;
+  width: 500px;
+}
+.comment h4,
+.comment span,
+.darker h4,
+.darker span {
+  display: inline;
+}
+
+.comment p,
+.comment span,
+.darker p,
+.darker span {
+  color: rgb(15, 15, 15);
+}
+
+h1,
+h4 {
+  color: rgb(39, 38, 38);
+  font-weight: 500;
+}
+label {
+  color: rgb(12, 12, 12);
+}
+
+#align-form {
+  margin-top: 20px;
+}
+.form-group p a {
+  color: rgb(22, 22, 22);
+}
+
+#darker img {
+  margin-right: 15px;
+  position: static;
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: black;
+  border-radius: 12px;
+}
+
+form {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.commenter-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.commenter-user-name,
+.commenter-user-name:hover {
+  text-decoration: none;
+  color: rgb(12, 12, 12);
+}
+
+.leave-cmmt {
+  padding: 30px 30px 30px 0px;
+}
+
+.com-content {
+  margin-left: 93px;
+}
+
+.hidden {
+  display: none;
+}

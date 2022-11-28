@@ -1,27 +1,28 @@
-<h1>Edit Post</h1>
+<%= stylesheet_link_tag 'newPost.css' %>
 
 <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
-  <div>
-    <%= f.label :job_heading %><br>
+<h1>Hey <%= current_user.f_name %>, wanna edit the post ?</h1>
+  <div class="field">
+    <%= f.label :job_heading %>
     <%= f.text_field :job_heading %>
   </div>
 
-  <div>
-    <%= f.label :job_type %><br>
+  <div class="field">
+    <%= f.label :job_type %>
     <%= f.text_field :job_type %>
   </div>
 
-  <div>
-    <%= f.label :job_description %><br>
+  <div class="field">
+    <%= f.label :job_description %>
     <%= f.text_area :job_description %>
   </div>
 
-  <div>
-    <%= f.label :additional_info %><br>
+  <div class="field">
+    <%= f.label :additional_info %>
     <%= f.text_area :additional_info %>
   </div>
 
-  <div>
+  <div class="button">
     <%= f.submit %>
   </div>
 <% end %>

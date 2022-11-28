@@ -56,10 +56,18 @@ body {
 
 .dashb-profile-pic {
   border-radius: 50%;
-  max-width: 100%;
+  max-width: 65%;
   height: auto;
 }
 
 .heading {
   font-weight: 800;
+}
+
+.edit-button {
+  color: #e2e8f0;
+}
+
+.image-upload {
+  border-radius: 5px;
 }

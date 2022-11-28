@@ -14,4 +14,13 @@ module CommentsHelper
             comments = "0 comments"
         end
     end
+
+    def get_commenter_details(comment)
+        @post = Post.where(id: comment.post_id)
+        if(@post)
+            @user = User.where(id: comment.commenter_id).first
+        else 
+            @user = nil
+        end
+    end
 end

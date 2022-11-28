@@ -9,7 +9,7 @@ module ExploreHelper
             time = "Yesterday " + created_at.localtime.strftime("%H:%M %p").to_s
 
         else
-            time = created_at.localtime.strftime("%H:%M %p").to_s
+            time = created_at.localtime.strftime("%d %B, %Y").to_s
         end
     end
 

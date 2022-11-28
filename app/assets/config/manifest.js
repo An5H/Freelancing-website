@@ -4,8 +4,14 @@
 //= link posts.css
 //= link_tree ../../../vendor/javascript .js
 //= link notifications.css
-//= link notification-modal.css
 //= link header.css
 //= link popup.js
 //= link dashboard.css
 //= link profile.css
+//= link newPost.css
+//= link home.css
+//= link signup.css
+//= link login.css
+//= link search.css
+//= link applications.css
+//= link comment.css

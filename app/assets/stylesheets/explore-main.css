@@ -11,19 +11,27 @@ body {
 }
 
 .sidebar-container {
-  padding: 20px;
   height: inherit;
-  background-color: white;
+  background-color: transparent;
   border-radius: 7px;
   position: sticky;
   top: 130px;
 }
 .sidebar {
-  height: 70px;
-  margin: auto;
-  background-color: rgb(255, 255, 255);
+  height: 51px;
+  margin-bottom: 15px;
+  margin-left: 289px;
+  background-color: white;
+  width: 138px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding-top: 14px;
+  padding: 14px 14px 14px 14px;
 }
-
+.sidebar:hover {
+  text-decoration: underline;
+}
 .feed {
   height: inherit;
   background-color: rgb(218, 216, 216);
@@ -43,4 +51,24 @@ body {
   color: rgb(24, 10, 10);
   font-size: larger;
   font-weight: 200;
+}
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.forms {
+  display: flex;
+  justify-content: center;
+}
+
+.logout-btn {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent;
+  font-weight: 450;
+  color: black;
+  font-size: 17px;
+}
+.logout-btn:hover {
+  text-decoration: underline;
 }

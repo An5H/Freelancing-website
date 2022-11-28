@@ -1,25 +1,29 @@
+<%= stylesheet_link_tag 'newPost.css' %>
+
 <%= form_tag(model: @post) do %>
-  <div>
+<h1>Hey <%= current_user.f_name %>, let's create a new Post</h1>
+
+  <div class="field">
     <%= label_tag :job_heading %><br>
     <%= text_field_tag :job_heading %>
   </div>
 
-  <div>
+  <div class="field">
     <%= label_tag :job_type %><br>
     <%= text_field_tag :job_type %>
   </div>
 
-  <div>
+  <div class="field">
     <%= label_tag :job_description %><br>
     <%= text_area_tag :job_description %>
   </div>
 
-  <div>
+  <div class="field">
     <%= label_tag :additional_info %><br>
     <%= text_area_tag :additional_info %>
   </div>
 
-  <div>
+  <div class="button">
     <%= submit_tag %>
   </div>
 <% end %>

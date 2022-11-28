@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(https://images.unsplash.com/photo-1661181715626-9bbf60cc7bce?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjE4MTgyNTY&ixlib=rb-1.2.1&q=80);
+  height: 98vh;
+  width: 98vw;
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  margin: 15px auto 0;
+  position: relative;
+}
+
+svg {
+  width: 50px;
+  fill: white;
+}
+
+nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.get-started {
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(180, 96, 83, 1) 6%,
+    rgba(215, 52, 5, 1) 73%
+  );
+  padding: 10px 25px;
+  border-radius: 25px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+h3 {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 1.25rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  margin: 10px 0 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.button {
+  display: flex;
+  gap: 50px;
+  background: linear-gradient(
+    90deg,
+    rgba(180, 96, 83, 1) 6%,
+    rgba(215, 52, 5, 1) 73%
+  );
+  padding: 15px 25px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+}

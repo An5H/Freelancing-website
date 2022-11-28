@@ -41,3 +41,11 @@
 .name {
   font-size: 18px;
 }
+
+select {
+  width: 70px;
+  padding-left: 10px;
+  padding-right: 5px;
+  height: 40px;
+  border-radius: 24px;
+}

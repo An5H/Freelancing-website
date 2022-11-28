@@ -9,6 +9,10 @@
   margin-right: auto;
 }
 
+p {
+  font-weight: bold;
+}
+
 .poster-details {
   display: flex;
   align-items: center;
@@ -69,7 +73,7 @@
 }
 
 .job-heading {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .stats-container {
@@ -84,10 +88,10 @@
 }
 
 .applied-container {
-  float: right;
   color: grey;
   font-size: 14px;
   height: 30px;
+  text-align: right;
 }
 
 .apply-button {
@@ -95,6 +99,7 @@
   align-items: center;
   float: right;
   cursor: pointer;
+  padding-right: 15px;
 }
 
 .applied-button {
@@ -105,4 +110,28 @@
 
 img {
   color: grey;
+}
+
+.show-post-container {
+  padding: 20px;
+  width: 100%;
+  border-radius: 7px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.show-applied-container {
+  padding: 0px 15px 0px 0px;
+  color: grey;
+  font-size: 14px;
+  height: 30px;
+  text-align: right;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: black;
 }

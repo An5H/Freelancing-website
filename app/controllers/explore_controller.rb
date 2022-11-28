@@ -22,6 +22,7 @@ class ExploreController < ApplicationController
                 @notifications << notification_data
             end
         end
+        check_user_profile_exists()
     end
 
     private
@@ -68,6 +69,15 @@ class ExploreController < ApplicationController
             isapplied.count
         else
             0
+        end
+    end
+
+    def check_user_profile_exists()
+        if user_signed_in?
+            isProfilePresent = Profile.where(user_id: current_user.id)
+            if(isProfilePresent.nil? or isProfilePresent.empty?)
+                Profile.create(user_id: current_user.id, profession: "None", rating: 0.0, open_to_work: true, open_to_hire: false, experience: 0, contact_number: "None", state: "None", country: "None")
+            end
         end
     end
 end
