@@ -2,14 +2,21 @@
 
 <div class="col-xs-12 show-post-container">
   <div class="col-xs-6">
+    <div class="col-xs-12 exp-btn-container pad-0">
+      <a id="exp-btn" href="/explore"><img id="arrow-return" src="<%= asset_path('arrow-return') %>" width="20" height="20"> Back to explore</a>
+    </div>
     <div class="col-xs-12 pad-0 poster-details">
       <div class="col-xs-2">
         <%= image_tag check_avatar(@user.profile), class: "poster-profile-pic"%>
       </div>
 
-      <div class="col-xs-6 poster-name"><a href=<%="/profile/#{@user.username}"%>><%= @user.f_name%> <%= @user.l_name %></a></div>
+      <div class="col-xs-2 poster-name"><a href=<%="/profile/#{@user.username}"%>><%= @user.f_name%> <%= @user.l_name %></a></div>
 
-      <div class="col-xs-4 posted-date"><%= get_created_at(@post.created_at) %></div>
+      <div class="col-xs-3 posted-date"><%= get_created_at(@post.created_at) %> </div>
+      <% if @user.id == current_user.id %>
+        <div class="col-xs-1"> <a href=<%= edit_post_path(@post) %>><img id="delete-icon" src="<%= asset_path('edit') %>" width="25" height="25"></a></div>
+        <div class="col-xs-2"> <a href=<%="/post/#{@post.id}/delete" %>><img id="delete-icon" src="<%= asset_path('delete') %>" width="25" height="25"></a></div>
+      <% end %>
     </div>
 
     <div class="col-xs-12 heading container">
@@ -54,7 +61,7 @@
         <% end %>
       </div>
       <div class="col-xs-3 pad-0"></div>
-      <div class="col-xs-3">
+      <div class="col-xs-3 pad-0">
         <div class = "show-applied-container"><%= @applicants.to_s + " Applied" %></div>
       </div>
     </div>
@@ -76,9 +83,9 @@
 
       <div class="col-xs-3">
         <% if @isApplied == true %>
-          <div class="apply-button"><img id="comments-icon" src="<%= asset_path('applied') %>" width="30" height="30"></div>
+          <div class="show-applied-container"><img src="<%= asset_path('applied') %>" width="30" height="30"></div>
         <% else %>
-          <a href=<%="/post/#{@post.id}/apply"%>><div class="apply-button"><img id="likes-icon" src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
+          <a href=<%="/post/#{@post.id}/apply"%>><div class="show-applied-container"><img src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
         <% end %>
       </div>
     </div>
@@ -93,7 +100,7 @@
                 <h1>Comments</h1>
               </div>
               <div class="col-xs-12">
-                <%= render @post.comments %>
+                <%= render @post.comments, locals:{post: @post}%>
               </div>
           </div>
       <% else %>

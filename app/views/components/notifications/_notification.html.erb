@@ -2,7 +2,7 @@
   
 <% if nf[:notification].status == "unread"%>  
   <div class="notification-unread">
-      <div class="notification-profile-pic"></div>
+    <%= image_tag get_poster_pic(nf[:post]), class: "notification-profile-pic"%>
       <div class="data">     
         <div class="poster-name">
           <%= link_to nf[:post].job_heading, post_path(nf[:post])%>
@@ -14,7 +14,7 @@
   </div>
 <% else %> 
   <div class="notification-read">
-      <div class="notification-profile-pic"></div>
+    <%= image_tag get_poster_pic(nf[:post]), class: "notification-profile-pic"%>      
       <div class="data">     
         <div class="poster-name">
           <%= link_to nf[:post].job_heading, post_path(nf[:post])%>

@@ -30,6 +30,9 @@ Rails.application.routes.draw do
 
   #update post
   patch 'post/:id', to: 'post#update'
+
+  #delete a comment
+  post '/post/:id/comments/:comment_id', to: "comments#delete"
   
   #new Post
   post "/post/new", to: "post#create"

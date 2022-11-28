@@ -2,16 +2,20 @@
 
 <div class="comment mt-4 text-justify float-left pad-0">
     <% if !get_commenter_details(comment).nil? %>
-        <div class="col-xs-12">
-            <div class="com-img col-xs-2"> <%= image_tag check_avatar(get_commenter_details(comment).profile), class: "commenter-profile-pic"%> </div>
-            <div class="com-details col-xs-10">
+        <div class="col-xs-12 com-data">
+            <div class="col-xs-2"> <%= image_tag check_avatar(get_commenter_details(comment).profile), class: "commenter-profile-pic"%> </div>
+            <div class="com-details col-xs-9">
                 <h4><a class="commenter-user-name" href=<%="/profile/#{@user.username}"%>><%= get_commenter_details(comment).f_name %> <%= get_commenter_details(comment).l_name %></a></h4>
                 <span>- <%= get_created_at(comment.created_at) %></span>
                 <br>
             </div>
+            <div class="col-xs-1">
+                <% if current_user.id == comment.commenter_id %>
+                    <a href=<%="/post/#{@post.first.id}/comments/#{comment.id}"%>><img id="delete-icon" src="<%= asset_path('delete') %>" width="25" height="25"></a>
+                <% end %>
+            </div>
         </div>       
         <div class="com-content col-xs-12"><%= comment.comment %></div>
-        <%# <%= link_to "Destroy", "/post/#{@post.id}/comments/#{comment.id}", method: :post, disabled: false %>
         <br>
     <% else %>
         <div class="hidden"><%= "Error" %></div>

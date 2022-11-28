@@ -127,11 +127,26 @@ img {
   color: grey;
   font-size: 14px;
   height: 30px;
-  text-align: right;
 }
 
 a,
 a:hover {
   text-decoration: none;
   color: black;
+}
+
+#exp-btn {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #ccc8c8;
+  text-decoration: none;
+}
+
+#exp-btn:hover {
+  text-decoration: underline;
+}
+
+.exp-btn-container {
+  margin-bottom: 30px;
 }

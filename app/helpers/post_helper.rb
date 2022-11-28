@@ -7,4 +7,10 @@ module PostHelper
             @avatar
         end
    end
+
+   def get_poster_pic(post)
+    user_id = post.user_id
+    @user = User.where(id: user_id).first
+    return check_avatar(@user.profile)
+   end
 end

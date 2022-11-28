@@ -44,7 +44,6 @@ class PostController < ApplicationController
     end
 
     def create
-        # @post = Post.new(post_params)
         @post = Post.new(user_id: current_user.id, job_heading: params[:job_heading], job_type: params[:job_type], job_description: params[:job_description], additional_info: params[:additional_info])
         if @post.save
             redirect_to @post

@@ -2,7 +2,7 @@ class ExploreController < ApplicationController
     # get this user_id of the user who logins
     def index
         @posts = []
-        posts = Post.all
+        posts = Post.all.sort_by(&:created_at).reverse
         @notifications = []
         posts.map do |post|
             post_ob = Hash.new
@@ -76,7 +76,7 @@ class ExploreController < ApplicationController
         if user_signed_in?
             isProfilePresent = Profile.where(user_id: current_user.id)
             if(isProfilePresent.nil? or isProfilePresent.empty?)
-                Profile.create(user_id: current_user.id, profession: "None", rating: 0.0, open_to_work: true, open_to_hire: false, experience: 0, contact_number: "None", state: "None", country: "None")
+                Profile.create(user_id: current_user.id, profession: "None", rating: 0.0, open_to_work: true, open_to_hire: false, experience: 0, contact_number: "None", state: "None", country: "None", link: "None")
             end
         end
     end
