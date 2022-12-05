@@ -74,12 +74,14 @@
 
     <div class="col-xs-3 pad-0"></div>
 
-    <div class="col-xs-3 pad-0">
-      <% if post[:isapplied] == true %>
-        <div class="applied-button"><img src="<%= asset_path('applied') %>" width="30" height="30"><div style="margin-left: 10px">Applied</div></div>
-      <% else %>
-        <a href=<%="/post/#{post[:post].id}/apply"%>><div class="apply-button"><img src="<%= asset_path('apply') %>" width="30" height="30"><div style="margin-left: 10px">Apply ?</div></div></a>
-      <% end %>
-    </div>
+    <% if !(post[:poster_user].id == current_user.id) %>
+      <div class="col-xs-3 pad-0">
+        <% if post[:isapplied] == true %>
+          <div class="applied-button"><img src="<%= asset_path('applied') %>" width="30" height="30"><div style="margin-left: 10px">Applied</div></div>
+        <% else %>
+          <a href=<%="/post/#{post[:post].id}/apply"%>><div class="apply-button"><img src="<%= asset_path('apply') %>" width="30" height="30"><div style="margin-left: 10px">Apply ?</div></div></a>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -11,8 +11,8 @@
 
     <% if applicant[:status] == "In Progress" %>
         <td>
-            <a href=<%="/post/#{@post.id}/user/#{applicant[:user].id}/accept" %>><img id="likes-icon" src="<%= asset_path('accept-tick') %>" width="30" height="30"></a>
-            <a href=<%="/post/#{@post.id}/user/#{applicant[:user].id}/reject" %>><img id="likes-icon" src="<%= asset_path('cross-icon') %>" width="30" height="30"></a>
+            <a href=<%="/post/#{@post.first.id}/user/#{applicant[:user].id}/accept" %>><img id="likes-icon" src="<%= asset_path('accept-tick') %>" width="30" height="30"></a>
+            <a href=<%="/post/#{@post.first.id}/user/#{applicant[:user].id}/reject" %>><img id="likes-icon" src="<%= asset_path('cross-icon') %>" width="30" height="30"></a>
         </td>
     <% elsif applicant[:status] == "Accepted" %>
         <td><img id="likes-icon" src="<%= asset_path('accept-tick') %>" width="30" height="30"> Accepted </td>

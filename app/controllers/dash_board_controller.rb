@@ -34,7 +34,7 @@ class DashBoardController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:profession, :contact_number, :state, :country)
+      params.require(:profile).permit(:profession, :contact_number, :state, :country, :link)
     end
 
     def removeProfilePic

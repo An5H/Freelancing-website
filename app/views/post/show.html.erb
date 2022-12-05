@@ -81,13 +81,15 @@
 
       <div class="col-xs-3 pad-0"></div>
 
-      <div class="col-xs-3">
-        <% if @isApplied == true %>
-          <div class="show-applied-container"><img src="<%= asset_path('applied') %>" width="30" height="30"></div>
-        <% else %>
-          <a href=<%="/post/#{@post.id}/apply"%>><div class="show-applied-container"><img src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
-        <% end %>
-      </div>
+      <% if !(@user.id == current_user.id) %>
+        <div class="col-xs-3">
+          <% if @isApplied == true %>
+            <div class="show-applied-container"><img src="<%= asset_path('applied') %>" width="30" height="30"></div>
+          <% else %>
+            <a href=<%="/post/#{@post.id}/apply"%>><div class="show-applied-container"><img src="<%= asset_path('apply') %>" width="30" height="30"></div></a>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="col-xs-12 pad-0">
       <h2>Leave a comment:</h2>
